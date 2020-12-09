@@ -56,10 +56,8 @@ const displayToDos = () => {
 
 };
 
-
-// what happens when we click add it button i.e. Event Listeners
-addInput.addEventListener("click" , () => {
-
+// Creating function to creat To Do Items
+const createToDos = () => {
     checkInput = inputField.value;
 
     if(checkInput !== "" && typeof(checkInput)==="string") {
@@ -68,16 +66,23 @@ addInput.addEventListener("click" , () => {
     }else {
         alert("Enter Approriate Inputs for To Do List");
     }
+};
 
+// what happens when we click add it button i.e. Event Listeners
+addInput.addEventListener("click" , createToDos);
+
+// To Create To Do Items even when we click enter in the window
+document.addEventListener("keypress" , (event) => {
+    if(event.keyCode===13 || event.which===13) {
+        createToDos();
+    }
 });
 
-// Clearing the specific ToDos item when we click the cross icon
+
 // For that we are about to use Event Delegation
 // We yet don't have the icon in our dom so we have to trigger an event and catch it in the display-container
 // and from that we have to clear the text from which event got triggered.
-
-displayContainer.addEventListener("click" , () => {
-
+const deleteToDos = () => {
     // clicking on any part of the display-container can lead to removing the child
     // so we specifically select the cross icon as the target by differing it with it's id number
     const targetId = event.target.id;
@@ -94,12 +99,15 @@ displayContainer.addEventListener("click" , () => {
         deleteTarget.removeChild(event.target.parentNode.parentNode);
         }
 
-    })
+};
+
+// Clearing the specific ToDos item when we click the cross icon
+displayContainer.addEventListener("click" , deleteToDos);
 
 
 // Function to clear all Created ToDos
 const clearAll = () => {
-
+    inputField.value = "";
     if(div !== null) {
         const allItems = document.querySelectorAll(".item-display");
         const allItemsArray = Array.from(allItems);
@@ -112,9 +120,4 @@ const clearAll = () => {
 };
 
 // Clearing all ToDos and the input after we click Clear Button
-clearInput.addEventListener("click" , () => {
-
-    inputField.value = "";
-    clearAll();
-
-});
+clearInput.addEventListener("click" , clearAll);

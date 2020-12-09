@@ -122,4 +122,21 @@ h1 {
     .main-container {
         margin : 0 5%;
     }
+
+    .user-input {
+        padding: 8px;
+        margin-right: 8px;
+        font-size: 1rem;
+        width : 200px;
+    }
+
+    .input-button {
+        padding : 8px 12px;
+        font-size : 1rem;
+    }
+
+    .clear-button {
+        padding : 8px 12px;
+        font-size : 1rem;
+    }
 }

@@ -44,7 +44,8 @@ const displayToDos = () => {
     // Creating icon side to the span 
     const icon = document.createElement("i");
     setAttributes(icon , {
-        "class" : `fa fa-times-circle ${count}`
+        "class" : `fa fa-times-circle ${count}`,
+        "id" : `id/${count}`
     });
 
     // Making icons child of span , span child of div and div child of display-container
@@ -76,15 +77,24 @@ addInput.addEventListener("click" , () => {
 // and from that we have to clear the text from which event got triggered.
 
 displayContainer.addEventListener("click" , () => {
+
+    // clicking on any part of the display-container can lead to removing the child
+    // so we specifically select the cross icon as the target by differing it with it's id number
+    const targetId = event.target.id;
+    const splitId = targetId.split("/");
+    const targetIdNum = parseInt(splitId[1]);
+
     // using event.target , we get element from which event got triggered i.e. <i> element
     // using parentNode , we are moving into the common element of all display i.e. displayContainer
     // so that standing on that element we can delete the element's text which icon got the event triggered
-    const deleteTarget = event.target.parentNode.parentNode.parentNode;
+    if(targetIdNum){
+        const deleteTarget = event.target.parentNode.parentNode.parentNode;
 
-    // using removeChild method to delete the div containg span of the element which icon got the event triggered
-    deleteTarget.removeChild(event.target.parentNode.parentNode);
-    
-})
+        // using removeChild method to delete the div containg span of the element which icon got the event triggered
+        deleteTarget.removeChild(event.target.parentNode.parentNode);
+        }
+
+    })
 
 
 // Function to clear all Created ToDos

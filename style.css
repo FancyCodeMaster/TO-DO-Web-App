@@ -139,4 +139,8 @@ h1 {
         padding : 8px 12px;
         font-size : 1rem;
     }
+
+    .display-container div {
+        padding : 10px;
+    }
 }

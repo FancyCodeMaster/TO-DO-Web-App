@@ -107,3 +107,19 @@ h1 {
 .fa:active {
     transform : translateY(5px);
 }
+
+
+
+
+
+
+/* Media Queries */
+@media screen and (max-width : 500px) {
+    body {
+        font-size : 1.2rem;
+    }
+
+    .main-container {
+        margin : 0 5%;
+    }
+}

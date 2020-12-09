@@ -16,10 +16,10 @@ let div = null;
 
 
 // Set Attributes function
-const setAttributes = (item , attributes) => {
+function setAttributes(item, attributes) {
 
-    for(const el in attributes) {
-        item.setAttribute(el , attributes[el]);
+    for (const el in attributes) {
+        item.setAttribute(el, attributes[el]);
     }
 
 }

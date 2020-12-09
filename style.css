@@ -32,6 +32,10 @@ h1 {
     margin-bottom : 20px;
 }
 
+.input-container form {
+    display : inline-block;
+}
+
 .user-input {
     padding: 8px;
     outline: none;
@@ -56,6 +60,7 @@ h1 {
     color : #fff;
     font-size : 1.2rem;
     border-color : orange;
+    display: inline-block;
 }
 
 .input-button:active {
